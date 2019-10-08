@@ -66,3 +66,4 @@ gem 'html2slim'
 
 gem 'bootstrap'
 gem 'bcrypt'
+gem 'pry-rails', group: [:development, :test]
