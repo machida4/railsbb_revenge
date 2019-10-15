@@ -1,4 +1,6 @@
 .my-3.p-3.bg-white.rounded.shadow-sm
+  p
+    = link_to "新規スレッド", new_topic_path
   .h6.border-bottom.border-gray.mb-n1 スレッド一覧
   - @topics.each_with_index do |topic, index|
     .media
