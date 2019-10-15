@@ -1,0 +1,37 @@
+.my-3.p-3.bg-white.rounded.shadow-sm
+  h2.border-bottom.p-2
+    = @topic.title
+
+  - @posts.each_with_index do |post, index|
+    .media
+      / TODO: ここDRYにしたいけどやりかたがわからない
+      / .border-bottomのありなしだけ
+      - if index < @posts.length - 1
+        .media-body.my-1.p-1.border-bottom
+          h5= (index + 1).to_s + ' ' + post.user.name
+          .ml-3
+            = simple_format(h(post.message), {}, sanitize: false, wrapper_tag: "div")
+          / .img-fluid.mt-3.mb-3
+          /   = image_tag post.image, class: 'img-fluid' if post.image.attached?
+          .small.text-muted.float-right.mt-n2
+            = I18n.l(post.created_at)
+      - else
+        .media-body.my-1.p-1
+          h5= (index + 1).to_s + ' ' + post.user.name
+          .ml-3
+            = simple_format(h(post.message), {}, sanitize: false, wrapper_tag: "div")
+          / .img-fluid.mt-3.mb-3
+          /   = image_tag post.image, class: 'img-fluid' if post.image.attached?
+          .small.text-muted.float-right.mt-n2
+            = I18n.l(post.created_at)
+
+  .my-3.p-3.border.rounded
+    = form_with url: topic_posts_path, model: @newpost, local: true do |f|
+      .form-group
+        = f.label "メッセージ"
+        = f.text_area :message, rows: 7, class: 'form-control'
+      / .form-group
+      /   = f.label "画像"
+      /   = f.file_field :image, class: 'form-control-file'
+      = f.hidden_field :topic_id
+      = f.submit "投稿", class: 'btn btn-primary'

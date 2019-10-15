@@ -1,0 +1,14 @@
+.my-3.p-3.bg-white.rounded.shadow-sm
+  .h6.border-bottom.border-gray.mb-n1 スレッド一覧
+  - @topics.each_with_index do |topic, index|
+    .media
+      - if index < @topics.length - 1
+        .media-body.border-bottom.border-gray.mt-3
+          h3= link_to topic.title, topic_posts_path(topic)
+          .small.text-muted.float-right.mb-n1
+            p= I18n.l(topic.created_at)
+      - else
+        .media-body.mt-3.mb-n2
+          h3= link_to topic.title, topic_posts_path(topic)
+          .small.text-muted.float-right.mb-n1
+            p= I18n.l(topic.created_at)
