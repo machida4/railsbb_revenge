@@ -23,9 +23,15 @@ html
         ul.navbar-nav
           li.nav-item
             - if current_user.present?
-              a.nav-link href="/"
+              a.nav-link href="/login"
                 = current_user.name
             - else
               a.nav-link href="/login"
                 = "Login"
-    = yield
+    .container
+      - if flash.notice.present?
+        p.notice.alert.alert-success= notice
+      - if flash.alert.present?
+        p.alert.alert-danger= alert
+      
+      = yield
