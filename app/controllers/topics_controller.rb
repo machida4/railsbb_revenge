@@ -11,10 +11,10 @@ class TopicsController < ApplicationController
     topic = Topic.new(topic_params)
     topic[:user_id] = current_user.id
     if topic.save!
-      redirected_to topics_path(topic), notice: 'トピックが作成されました'
+      redirect_to topics_path(topic), notice: 'トピックが作成されました'
     else
       flash[:alert] = "トピックの作成に失敗しました"
-      redirected_to topics_path
+      redirect_to topics_path
     end
   end
 
