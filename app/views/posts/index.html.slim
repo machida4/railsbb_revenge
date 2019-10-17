@@ -2,6 +2,18 @@
   h2.border-bottom.p-2
     = @topic.title
 
+  .media.my-1.p-3.border-bottom
+    .media-left
+      - if @topic.image.present?
+        .media-body
+          = image_tag @topic.image_url
+    .media-body
+      h5= @topic.user.name
+      .ml-3
+        = simple_format(h(@topic.message), {}, sanitize: false, wrapper_tag: "div")
+    / .col-12
+    /   .small.text-muted.float-right.mt-n2
+    /     = I18n.l(@topic.created_at)
   - @posts.each_with_index do |post, index|
     .media
       / TODO: ここDRYにしたいけどやりかたがわからない
