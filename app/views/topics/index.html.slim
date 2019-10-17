@@ -2,9 +2,9 @@
   p
     = link_to "新規スレッド", new_topic_path
   .h6.border-bottom.border-gray.mb-n1 スレッド一覧
-  - @topics.each_with_index do |topic, index|
+  - @ordered_topics.each_with_index do |topic, index|
     .media
-      - if index < @topics.length - 1
+      - if index < @ordered_topics.length - 1
         .media-body.border-bottom.border-gray.mt-3
           h3= link_to topic.title, topic_posts_path(topic)
           .small.text-muted.float-right.mb-n1

@@ -1,6 +1,6 @@
 class TopicsController < ApplicationController  
   def index
-    @topics = Topic.all
+    @ordered_topics = Topic.all.order(last_posted_at: "DESC")
   end
 
   def new
