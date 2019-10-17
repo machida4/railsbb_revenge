@@ -1,6 +1,6 @@
 class TopicsController < ApplicationController  
   def index
-    @topics = Topic.all
+    @ordered_topics = Topic.all.order(last_posted_at: "DESC")
   end
 
   def new
@@ -11,10 +11,10 @@ class TopicsController < ApplicationController
     topic = Topic.new(topic_params)
     topic[:user_id] = current_user.id
     if topic.save!
-      redirected_to topics_path(topic), notice: 'トピックが作成されました'
+      redirect_to topics_path(topic), notice: 'トピックが作成されました'
     else
       flash[:alert] = "トピックの作成に失敗しました"
-      redirected_to topics_path
+      redirect_to topics_path
     end
   end
 
@@ -24,7 +24,7 @@ class TopicsController < ApplicationController
   private
 
   def topic_params
-    params.require(:topic).permit(:title, :image)
+    params.require(:topic).permit(:title, :message, :image)
   end
 
 end

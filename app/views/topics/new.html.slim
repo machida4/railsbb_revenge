@@ -2,7 +2,9 @@
   .form-group
     = f.label "タイトル"
     = f.text_field :title, class: 'form-control'
+    = f.label "本文"
+    = f.text_area :message, rows: 7, class: 'form-control'
     = f.hidden_field :image
-    = f.file_field :image
+    = f.file_field :image, class: 'form-control-file'
   = f.submit "スレ立て", class: 'btn btn-primary'
 = link_to "スレッド一覧に戻る", topics_path, class: 'btn btn-primary'
