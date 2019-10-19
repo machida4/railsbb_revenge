@@ -1,7 +1,9 @@
 .my-3.p-3.bg-white.rounded.shadow-sm
   p
     = link_to "新規トピック", new_topic_path, class: 'btn btn-primary'
-  .h6.border-bottom.border-gray.mb-n1 トピック一覧
+  .mb-3
+    = paginate @ordered_topics
+  .h6.border-bottom.border-gray.mb-n1.p-2 トピック一覧
   - @ordered_topics.each_with_index do |topic, index|
     .media
       - if index < @ordered_topics.length - 1
@@ -24,3 +26,5 @@
             - else
               p
                 = "最終書き込み: " + time_ago_in_words(topic.last_posted_at) + "前"
+  .mb-3
+    = paginate @ordered_topics
