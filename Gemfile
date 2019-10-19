@@ -71,3 +71,4 @@ gem 'pry-rails', group: [:development, :test]
 gem 'better_errors', group: [:development, :test]
 gem 'binding_of_caller', group: [:development, :test]
 gem "shrine", "~> 3.0"
+gem 'kaminari'
