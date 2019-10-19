@@ -1,0 +1,5 @@
+h1 ImageList#index
+p Find me in app/views/image_list/index.html.slim
+- @topics.each do |topic|
+  .media
+    = image_tag topic.image_url
