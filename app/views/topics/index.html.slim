@@ -10,17 +10,17 @@
           .small.text-muted.float-right.mb-n1
             - if topic.last_posted_at > 5.minutes.ago
               p style="color:#ff0000;"
-                = "最終書き込み: 約" + time_ago_in_words(topic.last_posted_at) + "前"
+                = "最終書き込み: " + time_ago_in_words(topic.last_posted_at) + "前"
             - else
               p
-                = "最終書き込み: 約" + time_ago_in_words(topic.last_posted_at) + "前"
+                = "最終書き込み: " + time_ago_in_words(topic.last_posted_at) + "前"
       - else
         .media-body.mt-3.mb-n2
           h3= link_to topic.title, topic_posts_path(topic)
           .small.text-muted.float-right.mb-n1
             - if topic.last_posted_at > 5.minutes.ago
               p style="color:#ff0000;"
-                = "最終書き込み: 約" + time_ago_in_words(topic.last_posted_at) + "前"
+                = "最終書き込み: " + time_ago_in_words(topic.last_posted_at) + "前"
             - else
               p
-                = "最終書き込み: 約" + time_ago_in_words(topic.last_posted_at) + "前"
+                = "最終書き込み: " + time_ago_in_words(topic.last_posted_at) + "前"

@@ -1,8 +1,9 @@
 class Post < ApplicationRecord
-  after_save :set_last_posted_at_of_topic_to_current_time
-
   belongs_to :user
   belongs_to :topic
+  after_save :set_last_posted_at_of_topic_to_current_time
+
+  validates :message, presence: true
 
   private
 
