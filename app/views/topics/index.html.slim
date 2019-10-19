@@ -1,7 +1,7 @@
 .my-3.p-3.bg-white.rounded.shadow-sm
   p
-    = link_to "新規スレッド", new_topic_path, class: 'btn btn-primary'
-  .h6.border-bottom.border-gray.mb-n1 スレッド一覧
+    = link_to "新規トピック", new_topic_path, class: 'btn btn-primary'
+  .h6.border-bottom.border-gray.mb-n1 トピック一覧
   - @ordered_topics.each_with_index do |topic, index|
     .media
       - if index < @ordered_topics.length - 1
