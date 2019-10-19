@@ -1,7 +1,8 @@
 class PostsController < ApplicationController
   def index
+    @page = params[:page] || 1
     @topic = Topic.find(params[:topic_id])
-    @posts = @topic.posts.page(params[:page])
+    @posts = @topic.posts.page(@page)
     @newpost = Post.new(topic_id: params[:topic_id])
   end
 
