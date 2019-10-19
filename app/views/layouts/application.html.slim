@@ -17,7 +17,7 @@ html
             a.nav-link href="/topics"
               = "トピック一覧"
           li.nav-item.active
-            a.nav-link href="/"
+            a.nav-link href="/image_list"
               = "画像一覧"
       .collapse.navbar-collapse.justify-content-end
         ul.navbar-nav
@@ -30,8 +30,9 @@ html
                 = "Login"
     .container
       - if flash.notice.present?
-        p.notice.alert.alert-success= notice
+        - flash.notice.each do |s|
+          p.notice.alert.alert-success= s
       - if flash.alert.present?
-        p.alert.alert-danger= alert
-      
+        - flash.alert.each do |s|
+          p.alert.alert-danger= s
       = yield

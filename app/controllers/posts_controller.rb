@@ -8,11 +8,11 @@ class PostsController < ApplicationController
   def create
     post = Post.new(post_params)
     post[:user_id] = current_user.id
-    if post.save!
-      redirect_to topic_posts_path(post.topic), notice: '書き込みに成功しました'
-    else
-      flash[:alert] = "書き込みに失敗しました"
+    if post.save
+      flash[:notice] =  ["書き込みに成功しました"]
       redirect_to topic_posts_path(post.topic)
+    else
+      redirect_to topic_posts_path(post.topic), alert: post.errors.full_messages
     end
   end
 
