@@ -11,7 +11,7 @@
       h5= @topic.user.name
       .ml-3
         = simple_format(h(@topic.message), {}, sanitize: false, wrapper_tag: "div")
-    / .col-12
+    / .col-12"
     /   .small.text-muted.float-right.mt-n2
     /     = I18n.l(@topic.created_at)
   - @posts.each_with_index do |post, index|
@@ -36,6 +36,8 @@
           /   = image_tag post.image, class: 'img-fluid' if post.image.attached?
           .small.text-muted.float-right.mt-n2
             = I18n.l(post.created_at)
+  .mb-3
+    = paginate @posts
 
   .my-3.p-3.border.rounded
     = form_with url: topic_posts_path, model: @newpost, local: true do |f|
